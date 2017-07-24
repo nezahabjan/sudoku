@@ -1,7 +1,6 @@
 class Sudoku:
     def __init__(self):
-        #self.niz_podatkov = '030601080000820001820000000200400700004000900005002006000000028100067000090204030'
-        self.niz_podatkov = '123456789000820001820000000200400700004000900005002006000000028100067000090204030'
+        self.niz_podatkov = '483921657967345821251876493548132976729564138136798245372689514814253769695417382'
     def vrstica(self, indeks):
         vrstica = ''
         for i in range(1,10):
@@ -13,6 +12,7 @@ class Sudoku:
         for i in range(0,9):
             stolpec += (self.niz_podatkov[indeks - 1 + i * 9])
         print(stolpec)
+        return stolpec
     def kvadratek(self, indeks):
         kvadratek = ''
         mesto = 0
@@ -38,15 +38,18 @@ class Sudoku:
             if i == '0':
                 print('Do konca izpolni sudoku!')
                 napaka = True
+                return False
                 break
             elif i in brez_ponovitev:
                 print('Napaka')
                 napaka = True
+                return False
                 break
             else:
                 brez_ponovitev.add(i)
         if napaka == False:
             print('Vrstica je pravilno izpoljena')
+            return True
                 
     def pravilen_kvadratek(self, indeks):
         vrsta = ''
@@ -57,17 +60,48 @@ class Sudoku:
             if i == '0':
                 print('Do konca izpolni sudoku!')
                 napaka = True
+                return False
                 break
+            
             elif i in brez_ponovitev:
                 print('Napaka')
                 napaka = True
+                return False
                 break
             else:
                 brez_ponovitev.add(i)
         if napaka == False:
             print('Kvadratek je pravilno izpolnjen')
+            return True
     
-                
+    def pravilen_stolpec(self, indeks):
+        vrsta = ''
+        vrsta = self.stolpec(indeks)
+        brez_ponovitev = set()
+        napaka = False
+        for i in vrsta:
+            if i == '0':
+                print('Do konca izpolni sudoku!')
+                napaka = True
+                return False
+                break
+            elif i in brez_ponovitev:
+                print('Napaka')
+                napaka = True
+                return False
+                break
+            else:
+                brez_ponovitev.add(i)
+        if napaka == False:
+            print('Vrstica je pravilno izpoljena')
+            return True
+    def pravilen_sudoku(self):
+        for i in range(0,9):
+            if self.pravilna_vrstica(i) == True or self.pravilen_stolpec(i) == True or self.pravilen_kvadratek(i) == True:
+                print('Sudoku je pravilen')
+            else:
+                print('V sudoku je napaka')
+
 primer = Sudoku()
 primer.vrstica(2)
 primer.stolpec(2)
@@ -75,3 +109,4 @@ primer.kvadratek(5)
 primer.izpisi_sudoku()
 primer.pravilna_vrstica(1)
 primer.pravilen_kvadratek(5)
+primer.pravilen_sudoku()
