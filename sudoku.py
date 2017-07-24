@@ -1,6 +1,9 @@
 class Sudoku:
     def __init__(self):
-        self.niz_podatkov = '483921657967345821251876493548132976729564138136798245372689514814253769695417382'
+        self.niz_podatkov = ''
+    def spremeni_niz(self, niz):
+        self.niz_podatkov = niz
+        print('Niz spremenjen')
     def vrstica(self, indeks):
         vrstica = ''
         for i in range(1,10):
@@ -103,6 +106,9 @@ class Sudoku:
                 print('V sudoku je napaka')
 
 primer = Sudoku()
+print('Vpiši svoj sudoku niz za preverbo:')
+niz = input()
+primer.spremeni_niz(niz)
 primer.vrstica(2)
 primer.stolpec(2)
 primer.kvadratek(5)
