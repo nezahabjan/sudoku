@@ -23,8 +23,15 @@ class Sudoku:
                 print(niz)
             mesto += 9
         print(kvadratek)
-        
+    def izpisi_sudoku(self):
+        for i in range(0,9):
+            niz = '{0}{1}{2} {3}{4}{5} {6}{7}{8}'.format(self.niz_podatkov[0+i*9],self.niz_podatkov[1+i*9],self.niz_podatkov[2+i*9],self.niz_podatkov[3+i*9],self.niz_podatkov[4+i*9],self.niz_podatkov[5+i*9],self.niz_podatkov[6+i*9],self.niz_podatkov[7+i*9],self.niz_podatkov[8+i*9]) 
+            print(niz)
+            if (i+1)%3 == 0 :
+                print('')
+                
 primer = Sudoku()
 primer.vrstica(2)
 primer.stolpec(2)
 primer.kvadratek(5)
+primer.izpisi_sudoku()
