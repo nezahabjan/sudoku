@@ -3,7 +3,7 @@ class Sudoku:
         self.niz_podatkov = ''
     def spremeni_niz(self, niz):
         self.niz_podatkov = niz
-        print('Niz spremenjen')
+        print('Niz vnešen')
     def vrstica(self, indeks):
         vrstica = ''
         for i in range(1,10):
@@ -19,7 +19,7 @@ class Sudoku:
     def kvadratek(self, indeks):
         kvadratek = ''
         mesto = 0
-        prvikvadratek = indeks//3*3*9 + (indeks - indeks//3*3)*3-2 - 1
+        prvikvadratek = indeks//3*3*9 + (indeks - indeks//3*3)*3-2 + 2
         for j in range(0,3):
             for i in range(0,3):
                 kvadratek += self.niz_podatkov[prvikvadratek + i + mesto]
@@ -44,7 +44,7 @@ class Sudoku:
                 return False
                 break
             elif i in brez_ponovitev:
-                print('Napaka')
+                print('Napaka - število se ponovi')
                 napaka = True
                 return False
                 break
@@ -67,7 +67,7 @@ class Sudoku:
                 break
             
             elif i in brez_ponovitev:
-                print('Napaka')
+                print('Napaka - število v kvadratku se ponovi')
                 napaka = True
                 return False
                 break
@@ -89,30 +89,42 @@ class Sudoku:
                 return False
                 break
             elif i in brez_ponovitev:
-                print('Napaka')
+                print('Napaka - število se ponovi')
                 napaka = True
                 return False
                 break
             else:
                 brez_ponovitev.add(i)
         if napaka == False:
-            print('Vrstica je pravilno izpoljena')
+            print('Stolpec je pravilno izpoljena')
             return True
     def pravilen_sudoku(self):
+        napaka = False
+        prazna_vrstica = False
+        for i in self.niz_podatkov:
+            if i == '0':
+                prazna_vrstica = True
+                print('Najprej do konca izpolni sudoku!')
+                
         for i in range(0,9):
-            if self.pravilna_vrstica(i) == True or self.pravilen_stolpec(i) == True or self.pravilen_kvadratek(i) == True:
-                print('Sudoku je pravilen')
-            else:
-                print('V sudoku je napaka')
+            if self.pravilna_vrstica(i) == False or self.pravilen_stolpec(i) == False or self.pravilen_kvadratek(i) == False:
+                napaka = True
+        if prazna_vrstica == True:
+             print('Najprej do konca izpolni sudoku!')
+        elif napaka == False:
+            print('Sudoku je pravilno izpolnjen')
+        else:
+            print('Sudoku ni pravilno izpolnjen')
 
 primer = Sudoku()
-print('Vpiši svoj sudoku niz za preverbo:')
-niz = input()
+#print('Vpiši svoj sudoku niz za preverbo:')
+niz = '483921657967345821251876493548132976729564138136798245372689514814253769695417382'
+#niz = input()
 primer.spremeni_niz(niz)
-primer.vrstica(2)
-primer.stolpec(2)
-primer.kvadratek(5)
-primer.izpisi_sudoku()
-primer.pravilna_vrstica(1)
-primer.pravilen_kvadratek(5)
+#primer.vrstica(2)
+#primer.stolpec(2)
+#primer.kvadratek(5)
+#primer.izpisi_sudoku()
+#primer.pravilna_vrstica(1)
+#primer.pravilen_kvadratek(i)
 primer.pravilen_sudoku()
