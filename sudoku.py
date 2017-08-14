@@ -1,3 +1,5 @@
+import time
+
 class Sudoku:
     def __init__(self):
         self.niz_podatkov = ''
@@ -44,7 +46,7 @@ class Sudoku:
                 return False
                 break
             elif i in brez_ponovitev:
-                print('Napaka - število se ponovi')
+                print('Napaka - število v vrstici se ponovi')
                 napaka = True
                 return False
                 break
@@ -89,7 +91,7 @@ class Sudoku:
                 return False
                 break
             elif i in brez_ponovitev:
-                print('Napaka - število se ponovi')
+                print('Napaka - število v stolpcu se ponovi')
                 napaka = True
                 return False
                 break
@@ -129,3 +131,5 @@ primer.spremeni_niz(niz)
 #primer.pravilna_vrstica(1)
 #primer.pravilen_kvadratek(i)
 primer.pravilen_sudoku()
+
+time.sleep(15)
