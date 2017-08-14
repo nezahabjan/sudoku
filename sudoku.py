@@ -117,9 +117,10 @@ class Sudoku:
             print('Sudoku ni pravilno izpolnjen')
 
 primer = Sudoku()
-#print('Vpiši svoj sudoku niz za preverbo:')
-niz = '483921657967345821251876493548132976729564138136798245372689514814253769695417382'
-#niz = input()
+print('Vpiši svoj sudoku niz za preverbo:')
+# To je pravilen niz
+#niz = '483921657967345821251876493548132976729564138136798245372689514814253769695417382'
+niz = input()
 primer.spremeni_niz(niz)
 #primer.vrstica(2)
 #primer.stolpec(2)
